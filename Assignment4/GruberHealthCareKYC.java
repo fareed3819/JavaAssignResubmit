@@ -1,5 +1,3 @@
-package Assignment4;
-
 /*
 Gruber Healthcare has different types of forms for their customer, one of which is a know your customer form ( KYC ) which has to be filled annually. Each form has a date which signifies the date the form was filled called the form date.
 
@@ -31,6 +29,7 @@ No range
 05-03-2016 04-04-2016
 05-03-2016 15-03-2016
  */
+package Assignment4;
 
 import java.util.*;
 import java.text.*;
@@ -41,11 +40,13 @@ class GruberHealthCareKYC {
     static Logger logger = Logger.getLogger(GruberHealthCareKYC.class.getName());
     Calendar calendar = Calendar.getInstance();
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
-
+   /*
+   This method calculates range of dates which are valid to do kyc verification and returns valid range as String
+   if the anniversary date is 30 days behind or ahead of signup date
+    */
     public String rangeOfDatesForKYC(Date anniversary, Date today) {
         calendar.setTime(today);
         int presentYear = calendar.get(Calendar.YEAR);
-        //For setting the calendar object to point to the aniversary in the current year
         calendar.setTime(anniversary);
         calendar.set(Calendar.YEAR, presentYear);
         Date presentAniversary = calendar.getTime();
@@ -55,13 +56,13 @@ class GruberHealthCareKYC {
 
         calendar.add(Calendar.DATE, -60);       //Date at this point is 30 days ahead, so bringing it 60 days back would mean 30 days before the actual aniversary
         Date minDate = calendar.getTime();          //minimum possible date for KYC
+
         if (today.compareTo(minDate) <= 0) {        //Check if a range is obtainable from today
             logger.info("not in range");
             return "No Range";
         } else {
             logger.info(simpleDateFormat.format(minDate) + " " + (today.compareTo(maxDate) > 0 ? simpleDateFormat.format(maxDate) : simpleDateFormat.format(today)));
             return simpleDateFormat.format(minDate) + " " + (today.compareTo(maxDate) > 0 ? simpleDateFormat.format(maxDate) : simpleDateFormat.format(today));
-            // System.out.println(simpleDateFormat.format(minDate) + " " + (today.compareTo(maxDate) > 0 ? simpleDateFormat.format(maxDate) : simpleDateFormat.format(today)));
         }
     }
 
