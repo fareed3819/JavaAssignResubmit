@@ -18,14 +18,13 @@ class MatchingFilesTest {
     void TestCase2() {
         assertEquals("Not found",matchingFiles.searchForMatchedFiles(System.getProperty("user.home"), "indian*.java"));
     }
-<<<<<<< HEAD
     @Test
     void TestCase3() {
         assertEquals("/home/fareed/coding5.cpp"
-                , matchingFIles.searchForMatchedFiles(System.getProperty("user.home"), "[a-z]*[1-5].cpp"));
+                ,matchingFiles.searchForMatchedFiles(System.getProperty("user.home"), "[a-z]*[1-5].cpp"));
     }
 
 }
-=======
-}
->>>>>>> 022a2683f8cf4ee516c053a7eee209f5445accdd
+
+
+
