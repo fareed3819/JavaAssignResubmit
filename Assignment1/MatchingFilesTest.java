@@ -19,4 +19,10 @@ class MatchingFilesTest {
         assertEquals("Not found"
                 , matchingFIles.searchForMatchedFiles(System.getProperty("user.home"), "indian*.java"));
     }
+    @Test
+    void TestCase3() {
+        assertEquals("/home/fareed/coding5.cpp"
+                , matchingFIles.searchForMatchedFiles(System.getProperty("user.home"), "[a-z]*[1-5].cpp"));
+    }
+
 }
